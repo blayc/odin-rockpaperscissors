@@ -4,25 +4,23 @@
 // and declare a winner based on that comparison;
 // I then need to loop this process so that it 
 // repeats 5 times and console.log the result
-// of each round
+// of each round, 
+// ultimately declaring a winner
 
 function getComputerChoice () {
     let randomNumber = Math.random(); 
     if(randomNumber < .33) {return 'rock';
 }   else if(randomNumber < .66) {return 'paper';
 }   else {return 'scissors'}
-}
-
-
-let computerSelection = getComputerChoice(); 
-let playerSelection = prompt('What will you choose?', 'Rock, Paper, or Scissors?').toLowerCase();
+};
 
 
 function playRound (computerSelection, playerSelection) {
-    computerSelection = getComputerChoice();
+    computerSelection = getComputerChoice(); 
+    playerSelection = prompt('What will you choose?', 'Rock, Paper, or Scissors?').toLowerCase();
     switch(playerSelection) {
         case 'rock':
-            return computerSelection == 'paper' ? 'You Lose! Paper beats rock.' : 
+            return computerSelection == 'paper' ? 'You Lose! Paper beats rock.': 
              computerSelection == 'scissors' ? 'You Win! Rock beats scissors.' :
              "It's a tie! You both chose rock.";
         break;
@@ -41,10 +39,40 @@ function playRound (computerSelection, playerSelection) {
 
         default: 
         return 'Invalid input! Please choose Rock, Paper, or Scissors';
-    }
-}
+    };
+}; 
 
-alert(playRound(computerSelection, playerSelection))
+let wins = 0;
+let losses = 0;
+
+
+function game () {
+    for (let i = 0; i < 5; i++) {
+            let result = playRound(); 
+            alert(result);
+            console.log(result);
+            if (result.charAt(4) == 'W') {console.log(`Wins: ${++wins}`)}
+            else if (result.charAt(4) == 'L') {console.log(`Losses: ${++losses}`)}
+            
+     }
+
+     if (wins > losses) {return 'You win the match!'}
+     else if (losses > wins) {return 'You lose the match!'}
+     else {return 'It\'s a tie!'}
+    
+};
+
+let matchResult = game(); 
+
+alert(matchResult); 
+console.log(matchResult);
+
+
+
+
+
+
+
 
 // function playRound (computerSelection, playerSelection) {
 //    if(computerSelection == 'Rock' && playerSelection == 'Paper')
