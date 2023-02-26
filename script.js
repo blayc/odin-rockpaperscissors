@@ -47,7 +47,7 @@ let losses = 0;
 
 
 function game () {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 5 && wins < 3 && losses < 3; i++) {
             let result = playRound(); 
             alert(result);
             console.log(result);
