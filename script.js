@@ -15,44 +15,41 @@ function getComputerChoice () {
 };
 
 
-function playRound (computerSelection, playerSelection) {
+function capitalize (string) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+};
+
+
+function playRound () {
+   
     computerSelection = getComputerChoice(); 
     playerSelection = prompt('What will you choose?', 'Rock, Paper, or Scissors?').toLowerCase();
-    switch(playerSelection) {
-        case 'rock':
-            return computerSelection == 'paper' ? 'You Lose! Paper beats rock.': 
-             computerSelection == 'scissors' ? 'You Win! Rock beats scissors.' :
-             "It's a tie! You both chose rock.";
-        break;
-
-        case 'paper':
-            return computerSelection == 'scissors' ? 'You Lose! Scissors beats paper.' : 
-             computerSelection == 'rock' ? 'You Win! Paper beats rock.' :
-             "It's a tie! You both chose paper.";
-        break; 
-
-        case 'scissors':
-            return computerSelection == 'rock' ? 'You Lose! Rock beats scissors.' :
-             computerSelection == 'paper' ? 'You Win! Scissors beats paper.' :
-             "It's a tie! You both chose scissors.";
-        break;
-
-        default: 
-        return 'Invalid input! Please choose Rock, Paper, or Scissors';
+    
+    while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
+        playerSelection = prompt('Invalid entry! Please choose rock, paper, or scissors').toLowerCase()
     };
-}; 
 
-let wins = 0;
-let losses = 0;
+
+    if (playerSelection === 'rock' && computerSelection === 'scissors' ||
+        playerSelection === 'paper' && computerSelection === 'rock' ||
+        playerSelection === 'scissors' && computerSelection === 'paper')
+        {return `You win! ${capitalize(playerSelection)} beats ${computerSelection}.`}
+    else if (playerSelection === computerSelection)
+            {return 'It\'s a tie!'}
+    else {return `You lose! ${capitalize(computerSelection)} beats ${playerSelection}.`}
+    
+}; 
 
 
 function game () {
+    let wins = 0; 
+    let losses = 0;
     for (let i = 0; i < 5 && wins < 3 && losses < 3; i++) {
             let result = playRound(); 
             alert(result);
             console.log(result);
-            if (result.charAt(4) == 'W') {console.log(`Wins: ${++wins}`)}
-            else if (result.charAt(4) == 'L') {console.log(`Losses: ${++losses}`)}
+            if (result.includes('win')) {console.log(`Wins: ${++wins}`)}
+            else if (result.includes('lose')) {console.log(`Losses: ${++losses}`)}
             
      }
 
