@@ -5,7 +5,8 @@
 // I then need to loop this process so that it 
 // repeats 5 times and console.log the result
 // of each round, 
-// ultimately declaring a winner
+// keeping track of wins and losses
+// and ultimately declaring a winner
 
 function getComputerChoice () {
     let randomNumber = Math.random(); 
@@ -23,11 +24,15 @@ function capitalize (string) {
 function playRound () {
    
     computerSelection = getComputerChoice(); 
-    playerSelection = prompt('What will you choose?', 'Rock, Paper, or Scissors?').toLowerCase();
+    // playerSelection = prompt('What will you choose?', 'Rock, Paper, or Scissors?').toLowerCase();
+    let wins = 0; 
+    let losses = 0;
+
+    // Don't think I'll need this bit 
     
-    while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
-        playerSelection = prompt('Invalid entry! Please choose rock, paper, or scissors').toLowerCase()
-    };
+    // while (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
+    //     playerSelection = prompt('Invalid entry! Please choose rock, paper, or scissors').toLowerCase()
+    // };
 
 
     if (playerSelection === 'rock' && computerSelection === 'scissors' ||
@@ -41,6 +46,8 @@ function playRound () {
 }; 
 
 
+
+
 function game () {
     let wins = 0; 
     let losses = 0;
@@ -51,7 +58,7 @@ function game () {
             if (result.includes('win')) {console.log(`Wins: ${++wins}`)}
             else if (result.includes('lose')) {console.log(`Losses: ${++losses}`)}
             
-     }
+        }
 
      if (wins > losses) {return 'You win the match!'}
      else if (losses > wins) {return 'You lose the match!'}
@@ -63,14 +70,3 @@ let matchResult = game();
 
 alert(matchResult); 
 console.log(matchResult);
-
-
-
-
-
-
-
-
-// function playRound (computerSelection, playerSelection) {
-//    if(computerSelection == 'Rock' && playerSelection == 'Paper')
-//        {return 'You win! Paper beats rock.'}
