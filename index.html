@@ -18,9 +18,9 @@
     <div class="player zone">
     <p class = "player label">PLAYER</p>
     <div class="player arsenal">
-        <img class = "weapon" src="images/rock-svgrepo-com.svg" alt="a big scary rock made for bludgeoning">
-        <img class = "weapon" src="images/paper-crane-svgrepo-com.svg" alt="a brooding sheet of paper with bad intentions">
-        <img class = "weapon" src="images/scissors-5-svgrepo-com.svg" alt="the sharpest scissors you've ever seen">
+        <img data-weapon="rock" class = "weapon" src="images/rock-svgrepo-com.svg" alt="a big scary rock made for bludgeoning">
+        <img data-weapon="paper" class = "weapon" src="images/paper-crane-svgrepo-com.svg" alt="a brooding sheet of paper with bad intentions">
+        <img data-weapon="scissors" class = "weapon" src="images/scissors-5-svgrepo-com.svg" alt="the sharpest scissors you've ever seen">
     </div>
     </div>
 
@@ -32,9 +32,9 @@
 
     <div class="computer zone">
         <div class="computer arsenal">
-            <img class = "weapon" src="images/rock-svgrepo-com.svg" alt="a big scary rock made for bludgeoning">
-            <img class = "weapon" src="images/paper-crane-svgrepo-com.svg" alt="a brooding sheet of paper with bad intentions">
-            <img class = "weapon" src="images/scissors-5-svgrepo-com.svg" alt="the sharpest scissors you've ever seen">
+            <img data-weapon="rock" class = "weapon" src="images/rock-svgrepo-com.svg" alt="a big scary rock made for bludgeoning">
+            <img data-weapon="paper" class = "weapon" src="images/paper-crane-svgrepo-com.svg" alt="a brooding sheet of paper with bad intentions">
+            <img data-weapon="scissors" class = "weapon" src="images/scissors-5-svgrepo-com.svg" alt="the sharpest scissors you've ever seen">
         </div>
         <p class = "computer label">COMPUTER</p>
         </div>
@@ -42,8 +42,8 @@
     </div>
 
     <footer>
-    <div class="player score">PLAYER SCORE: 0</div>
-    <div class="computer score">COMPUTER SCORE: 0</div>
+    <div class="player score">PLAYER SCORE: <span class="current-score"></span></div>
+    <div class="computer score">COMPUTER SCORE: <span class="current-score"></span></div>
     </footer>
 </body>
 </html>
