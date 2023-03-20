@@ -25,7 +25,7 @@ header {
     font-family: 'Times New Roman', Times, serif;
     letter-spacing: 100px;
     transform: translate(45px, 0px);
-    -webkit-text-stroke: 4.5px black;
+    -webkit-text-stroke: 4.5px black; 
     /* border: 1px solid white;  */
 }
 
@@ -221,3 +221,18 @@ footer {
     }
 }
 
+@keyframes fadeout-big {
+    0% {
+        opacity: 1;
+        font-size: 7rem;
+    }
+
+    25% {
+        opacity: .5
+    }
+
+    100% {
+        opacity: 0;
+        font-size: 20rem;
+    }
+}

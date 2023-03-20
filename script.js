@@ -165,7 +165,7 @@ function squareUp (e) {
 
 function displayOutcome () {
   setTimeout (() => {
-  const outcomeText = document.createElement('span');
+  outcomeText = document.createElement('span');
   outcomeText.style.position = 'fixed'; 
   outcomeText.style.top = '50%'; 
   outcomeText.style.left = '51%';
@@ -188,10 +188,28 @@ function displayOutcome () {
   outcomeText.style.marginTop = '-5px';
   outcomeText.style.webkitTextStroke = "3px black"; 
   outcome = outcomeText.textContent; 
-  outcomeText.addEventListener('animationend', keepScore);
+  playerWeapon.removeEventListener('transitionend', displayOutcome);
+  outcomeText.addEventListener('animationend', clearScreen);
+  ;
   }, 750);
   
 };
+
+function clearScreen () {
+  setTimeout(() => {
+  playerWeapon.style.transform = 'translate(0,0)'; 
+  computerWeaponImage.style.transform = 'translate(0,0)';
+  computerWeaponImage.addEventListener('transitionend', () => {
+    setTimeout(() => 
+      {outcomeText.style.animation = 'fadeout-big .25s ease-in forwards';
+      keepScore();}, 250); 
+  })
+  }, 500)
+  outcomeText.addEventListener('animationend', () => {
+    while (centerSection.firstChild) {
+    centerSection.removeChild(centerSection.firstChild)};})
+};
+
 
 function keepScore() {
   setTimeout (() => {
@@ -201,77 +219,7 @@ function keepScore() {
   playerScoreDisplay.textContent = `${playerScore}`; 
   computerScoreDisplay.textContent = `${computerScore}`;
 }, 750)
-}
-
-
-
-
-  // if (playerSelection === 'rock' && computerSelection === 'scissors' ||
-  //       playerSelection === 'paper' && computerSelection === 'rock' ||
-  //       playerSelection === 'scissors' && computerSelection === 'paper')
-  //       {return `You win! ${capitalize(playerSelection)} beats ${computerSelection}.`}
-  //   else if (playerSelection === computerSelection)
-  //           {return 'It\'s a tie!'}
-  //   else {return `You lose! ${capitalize(computerSelection)} beats ${playerSelection}.`}
-
-
-
-// function selectWeapon (e) {
-//     selection = e.target; 
-//     playerArsenal.classList.add('no-hover');
-//     playerWeapons.forEach(weapon => {weapon.classList.add('no-hover')});
-//     playerWeapons.forEach(weapon => {weapon.removeEventListener('click', selectWeapon)}); 
-//     console.log(selection);
-//     startText.forEach((word, index) => {
-//         setTimeout(() => {slapDown(word, index)}, index * 1000);
-//     });
-// }
-// ;
-
-// slapDown = function (string, index) { 
-//     const word = document.createElement('span'); 
-//     word.textContent = '';
-//     word.textContent = string;
-//     word.style.position = 'fixed'; 
-//     word.style.top = '50%'; px
-//     word.style.left = '50%';
-//     word.style.transform = 'translate(-50%, -50%)';
-//     word.style.opacity = 0; 
-//     centerSection.appendChild(word);
-//     word.style.animation = 'fadeout .75s ease-in-out forwards'; 
-//     }; 
-
-
- 
-
-
-// function rochambeau () {
-//     let rockpaperscissors = ["ROCK", "PAPER", "SCISSORS", "SHOOT"]; 
-//     let letter = document.createElement("span");
-//     for (i = 0; i < 3; i++) {
-//         for (x = 0; x < rockpaperscissors[i].length; x++) {
-//             let displayedWord = rockpaperscissors[i];
-//             letter.textContent = displayedWord[x];
-//             centerSection.appendChild(letter); 
-//             setTimeout(() => {letter.style.opacity = 1;}
-//             , i * 1000);
-//         }
-//     }
-// }
-
- 
-// fadeText = function (text) {for (i = 0; i < text.length; i++) {
-//     const letter = document.createElement('span');
-//     letter.textContent = '';
-//     letter.textContent = text[i];
-//     letter.style.opacity = 0;
-//     letter.style.transition = 'opacity 0.9s';
-//     centerSection.appendChild(letter); 
-//     setTimeout(() => {
-//         letter.style.opacity = 1;}, i * 100);
-  
-// }
-// }
+};
 
 
 
